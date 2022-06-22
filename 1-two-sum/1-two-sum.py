@@ -1,10 +1,6 @@
 class Solution:
-    def twoSum(self, nums, target):
-        for i in nums[0:len(nums)-1]:    #nums에서 마지막 숫자를 제외한 숫자를 i에 차례대로 대입
-            for add in range(nums.index(i)+1,len(nums)):    #i 뒤에 오는 숫자들의 위치값을 add에 대입
-                if i + nums[add] == target:    #i에 i 뒤에 오는 숫자들을 더했을 때 target과 같다면
-                    output = []
-                    output = [nums.index(i)] + [add]    #output = i의 위치값 + 더한 값의 위치값(add)
-            
-                    return output
-        
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for i in range(0,len(nums)):    #i에 nums 길이만큼의 숫자 대입
+            tar = target - nums[i]    #tar = taget - nums에서 위치값이 i인 숫자
+            if tar in nums[i+1:]:    #nums에서 i+1번째~마지막에 위치한 숫자 중 tar과 같은 게 있다면
+                return  [i,nums.index(tar,i+1,)]    #a.index(b,c,d) => a에서 c~d번째 위치에서 b의 위치찾기
